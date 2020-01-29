@@ -18,8 +18,7 @@ class LogoutShortcodes
     {
         static $instance = null;
 
-        if (!$instance)
-        {
+        if (!$instance) {
             $instance = new self();
         }
 
