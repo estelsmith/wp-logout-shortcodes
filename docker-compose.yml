@@ -30,6 +30,8 @@ services:
                 define('EMPTY_TRASH_DAYS', 7);
                 define('DISALLOW_FILE_EDIT', true);
                 define('DISALLOW_FILE_MODS', false);
+                ini_set('display_errors', 1);
+                error_reporting(E_ALL);
         ports:
             - 8081:80
         volumes:
