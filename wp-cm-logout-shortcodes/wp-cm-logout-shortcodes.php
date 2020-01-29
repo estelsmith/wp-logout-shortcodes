@@ -39,12 +39,16 @@ class LogoutShortcodes
     }
 
     /**
-     * Generate and return the WordPress logout URL.
+     * Returns the WordPress logout URL.
      *
-     * @param array $options
+     * Available $options:
+     * - `redirect_to` (default: `/`) - The URL to redirect to after logout has occurred
+     * - `label` (default: `Logout`) - The label displayed in the `<a>` tag
+     *
+     * @param array|null $options
      * @return string
      */
-    public function logoutUrl(array $options): string
+    public function logoutUrl($options): string
     {
         $options = shortcode_atts(
             [
