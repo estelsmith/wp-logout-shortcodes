@@ -11,7 +11,7 @@ linked to the WordPress logout URL, such as the example link below:
 
 You can change the link's label by adding a `label` option to the shortcode, such as `[cm_logout_link label="Log me out"]`.
 
-By default, users are redirected to `/` after being logged out. That can easily be changed by specifying a `redirect_to`
+Users are redirected to `/` by default after being logged out. This can easily be changed by specifying a `redirect_to`
 option: `[cm_logout_link redirect_to="/another-page"]`.
 
 If you want to generate only the logout URL for your own purposes, such as for inclusion in javascript, you can use the
