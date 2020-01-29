@@ -12,12 +12,12 @@
 
 namespace CascadeMedia\WordPress;
 
-class LogoutShortcodes
+final class LogoutShortcodes
 {
     const PLUGIN_PREFIX = 'cm_logout';
 
     /**
-     * Instantiates class and ensures only a single instance exists.
+     * Instantiates class and ensures only a single instance exists, since there only needs to be one.
      *
      * This is the only supported way to instantiate the plugin.
      *
