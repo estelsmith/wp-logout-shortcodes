@@ -36,6 +36,7 @@ class LogoutShortcodes
     private function registerShortcodes()
     {
         add_shortcode('cm_logout_url', [$this, 'logoutUrl']);
+        add_shortcode('cm_logout_link', [$this, 'logoutLink']);
     }
 
     /**
@@ -58,6 +59,39 @@ class LogoutShortcodes
         );
 
         return wp_logout_url($options['redirect_to']);
+    }
+
+    /**
+     * Returns an `<a>` tag containing the logout URL.
+     *
+     * Available $options:
+     * - `redirect_to` (default: `/`) - The URL to redirect to after logout has occurred
+     * - `label` (default: `Logout`) - The label displayed in the `<a>` tag
+     *
+     * @param array|null $options
+     * @return string
+     */
+    public function logoutLink($options): string
+    {
+        $options = shortcode_atts(
+            [
+                'redirect_to' => '/',
+                'label' => 'Logout'
+            ],
+            $options
+        );
+
+        $url = $this->logoutUrl($options);
+        $label = $options['label'];
+
+        ob_start();
+        ?>
+        <a href="<?= $url ?>"><?= esc_html($label) ?></a>
+        <?php
+        $contents = ob_get_contents();
+        ob_end_clean();
+
+        return $contents;
     }
 }
 
