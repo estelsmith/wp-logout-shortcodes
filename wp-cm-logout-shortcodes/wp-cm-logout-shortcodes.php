@@ -3,7 +3,7 @@
  * Plugin Name: Cascade Media Logout Shortcodes
  * Plugin URI: https://github.com/cascademedia/wp-cm-logout-shortcodes
  * Description: Shortcodes for providing Logout links in WordPress.
- * Version: 0.0.1
+ * Version: 1.0.0
  * Requires at least: 5.3
  * Requires PHP: 7.0
  * Author: Cascade Media
