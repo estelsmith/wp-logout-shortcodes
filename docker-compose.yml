@@ -1,0 +1,44 @@
+version: "3.7"
+
+x-vars:
+    database:
+        database: &database_database wordpress
+        user: &database_user wordpress
+        password: &database_password test123
+
+services:
+    database:
+        image: mariadb:10.4.7
+        environment:
+            MYSQL_DATABASE: *database_database
+            MYSQL_USER: *database_user
+            MYSQL_PASSWORD: *database_password
+            MYSQL_RANDOM_ROOT_PASSWORD: "true"
+        volumes:
+            - database:/var/lib/mysql
+
+    wordpress:
+        image: wordpress:5.3.2-php7.3-apache
+        environment:
+            WORDPRESS_DB_HOST: database
+            WORDPRESS_DB_NAME: *database_database
+            WORDPRESS_DB_PASSWORD: *database_password
+            WORDPRESS_DB_USER: *database_user
+            WORDPRESS_CONFIG_EXTRA: |
+                define('WP_AUTO_UPDATE_CORE', 'minor');
+                define('WP_POST_REVISIONS', 5);
+                define('EMPTY_TRASH_DAYS', 7);
+                define('DISALLOW_FILE_EDIT', true);
+                define('DISALLOW_FILE_MODS', false);
+        ports:
+            - 8081:80
+        volumes:
+            - ./wp:/var/www/html
+            - ./wp-cm-logout-shortcodes:/var/www/html/wp-content/plugins/wp-cm-logout-shortcodes
+
+volumes:
+    database:
+
+networks:
+    default:
+        driver: overlay
