@@ -14,6 +14,15 @@ namespace CascadeMedia\WordPress;
 
 class LogoutShortcodes
 {
+    const PLUGIN_PREFIX = 'cm_logout';
+
+    /**
+     * Instantiates class and ensures only a single instance exists.
+     *
+     * This is the only supported way to instantiate the plugin.
+     *
+     * @return static
+     */
     public static function create(): self
     {
         static $instance = null;
@@ -31,12 +40,29 @@ class LogoutShortcodes
     }
 
     /**
+     * Returns the provided name after applying the plugin prefix.
+     *
+     * Example: "my_hook" becomes "cm_logout_my_hook"
+     *
+     * @param string $name
+     * @return string
+     */
+    private function getPrefixedName(string $name): string
+    {
+        return sprintf(
+            '%s_%s',
+            self::PLUGIN_PREFIX,
+            $name
+        );
+    }
+
+    /**
      * Register available shortcodes with WordPress.
      */
     private function registerShortcodes()
     {
-        add_shortcode('cm_logout_url', [$this, 'logoutUrl']);
-        add_shortcode('cm_logout_link', [$this, 'logoutLink']);
+        add_shortcode($this->getPrefixedName('url'), [$this, 'logoutUrl']);
+        add_shortcode($this->getPrefixedName('link'), [$this, 'logoutLink']);
     }
 
     /**
@@ -62,8 +88,8 @@ class LogoutShortcodes
             $options
         );
 
-        $redirectTo = apply_filters('cm_logout_url_redirect_to', $options['redirect_to']);
-        return apply_filters('cm_logout_url', wp_logout_url($redirectTo));
+        $redirectTo = apply_filters($this->getPrefixedName('url_redirect_to'), $options['redirect_to']);
+        return apply_filters($this->getPrefixedName('url'), wp_logout_url($redirectTo));
     }
 
     /**
@@ -94,15 +120,15 @@ class LogoutShortcodes
             $options
         );
 
-        $url = apply_filters('cm_logout_link_url', $this->logoutUrl($options));
-        $label = apply_filters('cm_logout_link_label', $options['label']);
+        $url = apply_filters($this->getPrefixedName('link_url'), $this->logoutUrl($options));
+        $label = apply_filters($this->getPrefixedName('link_label'), $options['label']);
 
         ob_start();
-        do_action('cm_logout_link_before');
+        do_action($this->getPrefixedName('link_before'));
         ?>
         <a href="<?= $url ?>"><?= esc_html($label) ?></a>
         <?php
-        do_action('cm_logout_link_after');
+        do_action($this->getPrefixedName('link_after'));
         $contents = ob_get_contents();
         ob_end_clean();
 
