@@ -149,7 +149,7 @@ final class LogoutShortcodes
         ob_start();
         do_action($this->getPrefixedName('link_before'));
         ?>
-        <a href="<?= $url ?>"><?= esc_html($label) ?></a>
+        <a href="<?= esc_attr($url) ?>"><?= esc_html($label) ?></a>
         <?php
         do_action($this->getPrefixedName('link_after'));
         $contents = ob_get_contents();
