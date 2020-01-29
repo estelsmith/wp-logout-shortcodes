@@ -46,6 +46,10 @@ class LogoutShortcodes
      * - `redirect_to` (default: `/`) - The URL to redirect to after logout has occurred
      * - `label` (default: `Logout`) - The label displayed in the `<a>` tag
      *
+     * Available filters:
+     * - `cm_logout_url_redirect_to` - The `redirect_to` option that was passed
+     * - `cm_logout_url` - The generated WordPress logout URL
+     *
      * @param array|null $options
      * @return string
      */
@@ -58,7 +62,8 @@ class LogoutShortcodes
             $options
         );
 
-        return wp_logout_url($options['redirect_to']);
+        $redirectTo = apply_filters('cm_logout_url_redirect_to', $options['redirect_to']);
+        return apply_filters('cm_logout_url', wp_logout_url($redirectTo));
     }
 
     /**
