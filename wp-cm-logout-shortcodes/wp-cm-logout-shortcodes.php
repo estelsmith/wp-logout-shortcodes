@@ -14,11 +14,6 @@ namespace CascadeMedia\WordPress;
 
 class LogoutShortcodes
 {
-    public function __construct()
-    {
-        $this->registerShortcodes();
-    }
-
     public static function create(): self
     {
         static $instance = null;
@@ -31,11 +26,25 @@ class LogoutShortcodes
         return $instance;
     }
 
+    private function __construct()
+    {
+        $this->registerShortcodes();
+    }
+
+    /**
+     * Register available shortcodes with WordPress.
+     */
     private function registerShortcodes()
     {
         add_shortcode('cm_logout_url', [$this, 'logoutUrl']);
     }
 
+    /**
+     * Generate and return the WordPress logout URL.
+     *
+     * @param array $options
+     * @return string
+     */
     public function logoutUrl(array $options): string
     {
         $options = shortcode_atts(
