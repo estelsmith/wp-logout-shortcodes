@@ -90,8 +90,8 @@ final class LogoutShortcodes
             $options
         );
 
-        $redirectTo = apply_filters($this->getPrefixedName('url_redirect_to'), $options['redirect_to']);
-        return apply_filters($this->getPrefixedName('url'), wp_logout_url($redirectTo));
+        $redirectTo = (string)apply_filters($this->getPrefixedName('url_redirect_to'), $options['redirect_to']);
+        return (string)apply_filters($this->getPrefixedName('url'), wp_logout_url($redirectTo));
     }
 
     /**
@@ -122,8 +122,8 @@ final class LogoutShortcodes
             $options
         );
 
-        $url = apply_filters($this->getPrefixedName('link_url'), $this->logoutUrl($options));
-        $label = apply_filters($this->getPrefixedName('link_label'), $options['label']);
+        $url = (string)apply_filters($this->getPrefixedName('link_url'), $this->logoutUrl($options));
+        $label = (string)apply_filters($this->getPrefixedName('link_label'), $options['label']);
 
         ob_start();
         do_action($this->getPrefixedName('link_before'));
