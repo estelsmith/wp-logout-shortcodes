@@ -10,6 +10,8 @@
  * Author URI: http://cascademedia.us/
  */
 
+declare(strict_types=1);
+
 namespace CascadeMedia\WordPress;
 
 final class LogoutShortcodes
