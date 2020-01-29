@@ -21,7 +21,7 @@ final class LogoutShortcodes
     /**
      * Instantiates class and ensures only a single instance exists, since there only needs to be one.
      *
-     * This is the only supported way to instantiate the plugin.
+     * This is the only supported way to start the plugin.
      *
      * @return static
      */
@@ -63,8 +63,15 @@ final class LogoutShortcodes
      */
     private function registerShortcodes()
     {
-        add_shortcode($this->getPrefixedName('url'), [$this, 'logoutUrl']);
-        add_shortcode($this->getPrefixedName('link'), [$this, 'logoutLink']);
+        add_shortcode(
+            $this->getPrefixedName('url'),
+            [$this, 'logoutUrl']
+        );
+
+        add_shortcode(
+            $this->getPrefixedName('link'),
+            [$this, 'logoutLink']
+        );
     }
 
     /**
@@ -90,8 +97,15 @@ final class LogoutShortcodes
             $options
         );
 
-        $redirectTo = (string)apply_filters($this->getPrefixedName('url_redirect_to'), $options['redirect_to']);
-        return (string)apply_filters($this->getPrefixedName('url'), wp_logout_url($redirectTo));
+        $redirectTo = (string)apply_filters(
+            $this->getPrefixedName('url_redirect_to'),
+            $options['redirect_to']
+        );
+
+        return (string)apply_filters(
+            $this->getPrefixedName('url'),
+            wp_logout_url($redirectTo)
+        );
     }
 
     /**
@@ -122,8 +136,15 @@ final class LogoutShortcodes
             $options
         );
 
-        $url = (string)apply_filters($this->getPrefixedName('link_url'), $this->logoutUrl($options));
-        $label = (string)apply_filters($this->getPrefixedName('link_label'), $options['label']);
+        $url = (string)apply_filters(
+            $this->getPrefixedName('link_url'),
+            $this->logoutUrl($options)
+        );
+
+        $label = (string)apply_filters(
+            $this->getPrefixedName('link_label'),
+            $options['label']
+        );
 
         ob_start();
         do_action($this->getPrefixedName('link_before'));
