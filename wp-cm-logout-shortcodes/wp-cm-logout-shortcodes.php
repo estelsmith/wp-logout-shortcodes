@@ -79,7 +79,6 @@ final class LogoutShortcodes
      *
      * Available $options:
      * - `redirect_to` (default: `/`) - The URL to redirect to after logout has occurred
-     * - `label` (default: `Logout`) - The label displayed in the `<a>` tag
      *
      * Available filters:
      * - `cm_logout_url_redirect_to` - The `redirect_to` option that was passed
