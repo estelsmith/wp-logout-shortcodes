@@ -29,6 +29,7 @@ The `[cm_logout_url]` shortcode gives you access to a couple of different filter
 The `[cm_logout_link]` shortcode also gives you access to some filters:
 - `cm_logout_link_url` - The WordPress logout URL that was generated
 - `cm_logout_link_label` - The `label` option that was passed to `[cm_logout_link]`
+- `cm_logout_link` - The logout link that was generated
 
 In addition to these filters, `[cm_logout_link]` provides a couple of actions you can hook into:
 - `cm_logout_link_before` - Fires before rendering the logout link

@@ -117,6 +117,7 @@ final class LogoutShortcodes
      * Available filters:
      * - `cm_logout_link_url` - The generated WordPress logout URL
      * - `cm_logout_link_label` - The `label` option that was passed
+     * - `cm_logout_link` - The logout link that was generated
      *
      * Available actions:
      * - `cm_logout_link_before` - Before rendering the logout link
@@ -154,7 +155,10 @@ final class LogoutShortcodes
         $contents = ob_get_contents();
         ob_end_clean();
 
-        return $contents;
+        return (string)apply_filters(
+            $this->getPrefixedName('link'),
+            $contents
+        );
     }
 }
 
