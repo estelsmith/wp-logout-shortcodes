@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Estel Smith's Logout Shortcodes
+ * Plugin Name: Estel's Logout Shortcodes
  * Plugin URI: https://github.com/estelsmith/wp-logout-shortcodes
  * Description: Shortcodes for providing Logout links in WordPress.
  * Version: 1.0.0
@@ -12,11 +12,11 @@
 
 declare(strict_types=1);
 
-namespace CascadeMedia\WordPress;
+namespace EstelSmith\WordPress;
 
 final class LogoutShortcodes
 {
-    const PLUGIN_PREFIX = 'cm_logout';
+    const PLUGIN_PREFIX = 'estelsmith_logout';
 
     /**
      * Instantiates class and ensures only a single instance exists, since there only needs to be one.
@@ -44,7 +44,7 @@ final class LogoutShortcodes
     /**
      * Returns the provided name after applying the plugin prefix.
      *
-     * Example: "my_hook" becomes "cm_logout_my_hook"
+     * Example: "my_hook" becomes "estelsmith_logout_my_hook"
      *
      * @param string $name
      * @return string
@@ -81,8 +81,8 @@ final class LogoutShortcodes
      * - `redirect_to` (default: `/`) - The URL to redirect to after logout has occurred
      *
      * Available filters:
-     * - `cm_logout_url_redirect_to` - The `redirect_to` option that was passed
-     * - `cm_logout_url` - The generated WordPress logout URL
+     * - `estelsmith_logout_url_redirect_to` - The `redirect_to` option that was passed
+     * - `estelsmith_logout_url` - The generated WordPress logout URL
      *
      * @param array|null $options
      * @return string
@@ -115,13 +115,13 @@ final class LogoutShortcodes
      * - `label` (default: `Logout`) - The label displayed in the `<a>` tag
      *
      * Available filters:
-     * - `cm_logout_link_url` - The generated WordPress logout URL
-     * - `cm_logout_link_label` - The `label` option that was passed
-     * - `cm_logout_link` - The logout link that was generated
+     * - `estelsmith_logout_link_url` - The generated WordPress logout URL
+     * - `estelsmith_logout_link_label` - The `label` option that was passed
+     * - `estelsmith_logout_link` - The logout link that was generated
      *
      * Available actions:
-     * - `cm_logout_link_before` - Before rendering the logout link
-     * - `cm_logout_link_after` - After rendering the logout link
+     * - `estelsmith_logout_link_before` - Before rendering the logout link
+     * - `estelsmith_logout_link_after` - After rendering the logout link
      *
      * @param array|null $options
      * @return string
