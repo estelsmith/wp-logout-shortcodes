@@ -1,4 +1,4 @@
-# estelsmith-logout-shortcodes
+# Estel's WordPress Logout Shortcodes Plugin
 This is a very simple plugin that provides shortcodes for creating or displaying user logout links in WordPress.
 
 ## Basic usage
