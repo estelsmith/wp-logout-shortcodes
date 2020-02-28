@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: Cascade Media Logout Shortcodes
- * Plugin URI: https://github.com/cascademedia/wp-cm-logout-shortcodes
+ * Plugin Name: Estel Smith's Logout Shortcodes
+ * Plugin URI: https://github.com/estelsmith/wp-logout-shortcodes
  * Description: Shortcodes for providing Logout links in WordPress.
  * Version: 1.0.0
  * Requires at least: 5.3
  * Requires PHP: 7.0
- * Author: Cascade Media
- * Author URI: http://cascademedia.us/
+ * Author: Estel Smith
+ * Author URI: https://estelsmith.com/
  */
 
 declare(strict_types=1);
