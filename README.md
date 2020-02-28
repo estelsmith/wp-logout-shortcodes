@@ -1,4 +1,4 @@
-# wp-cm-logout-shortcodes
+# estelsmith-logout-shortcodes
 This is a very simple plugin that provides shortcodes for creating or displaying user logout links in WordPress.
 
 ## Basic usage

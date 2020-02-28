@@ -36,7 +36,7 @@ services:
             - 8081:80
         volumes:
             - ./wp:/var/www/html
-            - ./wp-cm-logout-shortcodes:/var/www/html/wp-content/plugins/wp-cm-logout-shortcodes
+            - ./estelsmith-logout-shortcodes:/var/www/html/wp-content/plugins/estelsmith-logout-shortcodes
 
 volumes:
     database:
